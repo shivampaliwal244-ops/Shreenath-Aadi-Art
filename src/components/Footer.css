@@ -1,0 +1,68 @@
+/* ========================================
+   SIMPLE GLASS FOOTER
+   ======================================== */
+
+.footer {
+  position: relative;
+  width: 100%;
+
+  padding: 20px 0;
+
+  /* Glass effect */
+  background: rgba(10, 10, 20, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-top: 1px solid rgba(139, 92, 246, 0.3);
+
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Glow line on top */
+.footer-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #a855f7,
+    #c084fc,
+    #a855f7,
+    transparent
+  );
+
+  box-shadow:
+    0 0 15px rgba(168, 85, 247, 0.6),
+    0 0 30px rgba(192, 132, 252, 0.4);
+
+  animation: glowPulse 3s infinite;
+}
+
+/* Text */
+.footer-content p {
+  color: #ccc;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* Highlight name */
+.footer-content span {
+  color: #c084fc;
+  font-weight: 600;
+}
+
+/* Glow animation */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}

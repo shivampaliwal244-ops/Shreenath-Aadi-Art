@@ -1,0 +1,1292 @@
+/* ========================================
+   CONTACT SECTION - VIOLET POLISH + CHATBOT
+   FULLY MOBILE RESPONSIVE
+   ======================================== */
+
+.contact-section {
+  position: relative;
+  padding: 120px 0 250px; /* Extra padding for fixed footer */
+  overflow: hidden;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 20px;
+}
+
+/* Contact Header */
+.contact-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 0 15px; /* Mobile padding */
+}
+
+.contact-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 4vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.5));
+}
+
+.contact-subtitle {
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  color: #94a3b8;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+body.light-mode .contact-subtitle {
+  color: #64748b;
+}
+
+body.reading-mode .contact-subtitle {
+  color: #5c5040;
+}
+
+/* Contact Wrapper - Main Grid */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========================================
+   LEFT SIDE - Contact Info & Social
+   ======================================== */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Contact Info Grid */
+.contact-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Contact Info Card - Violet */
+.contact-info-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  animation: infoCardReveal 0.6s ease forwards;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-mode .contact-info-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+body.reading-mode .contact-info-card {
+  background: rgba(253, 245, 230, 0.8);
+  border-color: rgba(124, 58, 237, 0.15);
+}
+
+@keyframes infoCardReveal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.contact-info-card:hover {
+  transform: translateX(5px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.15);
+}
+
+/* Icon styling */
+.info-icon {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  min-width: 50px; /* Prevent shrinking */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--icon-color);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-ring {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid var(--icon-color);
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-info-card:hover .info-icon {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 0 25px var(--icon-color);
+}
+
+.contact-info-card:hover .icon-ring {
+  opacity: 0.8;
+  animation: ringPulse 1s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 0.4; }
+}
+
+/* Info content - text */
+.info-content {
+  flex: 1;
+  min-width: 0; /* Allow text truncation */
+  overflow: hidden;
+}
+
+.info-title {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+body.light-mode .info-title {
+  color: #64748b;
+}
+
+body.reading-mode .info-title {
+  color: #7a7060;
+}
+
+.info-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f8fafc;
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  word-break: break-word; /* Handle long emails */
+  line-height: 1.4;
+}
+
+body.light-mode .info-value {
+  color: #1e293b;
+}
+
+body.reading-mode .info-value {
+  color: #3d3222;
+}
+
+.contact-info-card:hover .info-value {
+  color: #a855f7;
+}
+
+/* Arrow indicator */
+.card-arrow {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.contact-info-card:hover .card-arrow {
+  color: #a855f7;
+  transform: translateX(5px);
+}
+
+/* Left glow bar */
+.info-card-glow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--glow-color);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 20px var(--glow-color);
+  border-radius: 4px 0 0 4px;
+}
+
+.contact-info-card:hover .info-card-glow {
+  opacity: 1;
+}
+
+/* ========================================
+   SOCIAL MEDIA SECTION
+   ======================================== */
+.social-section {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 16px;
+}
+
+body.light-mode .social-section {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+body.reading-mode .social-section {
+  background: rgba(253, 245, 230, 0.8);
+}
+
+.social-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #f8fafc;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+body.light-mode .social-title {
+  color: #1e293b;
+}
+
+body.reading-mode .social-title {
+  color: #3d3222;
+}
+
+.social-icons-grid {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-icon-btn {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--social-color);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-mode .social-icon-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.social-icon-btn:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: var(--social-color);
+  color: white;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 30px var(--social-color);
+}
+
+.social-tooltip {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 12px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.social-icon-btn:hover .social-tooltip {
+  opacity: 1;
+  visibility: visible;
+  bottom: -40px;
+}
+
+/* ========================================
+   CONTACT FORM - Violet Theme
+   ======================================== */
+.contact-form {
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 20px;
+}
+
+body.light-mode .contact-form {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.reading-mode .contact-form {
+  background: rgba(253, 245, 230, 0.9);
+}
+
+.form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #f8fafc;
+  text-align: center;
+}
+
+body.light-mode .form-title {
+  color: #1e293b;
+}
+
+body.reading-mode .form-title {
+  color: #3d3222;
+}
+
+/* Form row - side by side inputs */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+  width: 100%;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+  color: #f8fafc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  resize: none;
+  box-sizing: border-box;
+}
+
+body.light-mode .input-wrapper input,
+body.light-mode .input-wrapper textarea {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e293b;
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+body.reading-mode .input-wrapper input,
+body.reading-mode .input-wrapper textarea {
+  background: rgba(253, 245, 230, 0.9);
+  color: #3d3222;
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.input-wrapper input::placeholder,
+.input-wrapper textarea::placeholder {
+  color: #64748b;
+}
+
+body.reading-mode .input-wrapper input::placeholder,
+body.reading-mode .input-wrapper textarea::placeholder {
+  color: #7a7060;
+}
+
+.input-wrapper input:focus,
+.input-wrapper textarea:focus {
+  outline: none;
+  border-color: #a855f7;
+  background: rgba(139, 92, 246, 0.1);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+/* Focus line under inputs */
+.input-focus-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5cf6, #a855f7);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  border-radius: 0 0 12px 12px;
+}
+
+.input-wrapper input:focus ~ .input-focus-line,
+.input-wrapper textarea:focus ~ .input-focus-line {
+  width: 100%;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.7);
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 16px 35px;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 5px 25px rgba(139, 92, 246, 0.4);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.5);
+}
+
+.submit-btn svg {
+  font-size: 1.2rem;
+}
+
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.submit-btn:hover .btn-shine {
+  left: 100%;
+}
+
+/* ========================================
+   CHATBOT - Floating Widget - Violet
+   ======================================== */
+.chatbot-container {
+  position: fixed;
+  bottom: 180px; /* Above fixed footer */
+  right: 30px;
+  z-index: 1000;
+}
+
+/* Chat Toggle Button - Violet */
+.chatbot-toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 5px 25px rgba(139, 92, 246, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.chatbot-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 8px 35px rgba(139, 92, 246, 0.7),
+    0 0 60px rgba(168, 85, 247, 0.5);
+}
+
+/* Pulse animation for closed state */
+.chat-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #a855f7;
+  animation: chatPulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes chatPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* Chat Window - Violet */
+.chatbot-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 350px;
+  max-height: 480px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(15, 15, 25, 0.95);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  animation: chatSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+}
+
+body.light-mode .chatbot-window {
+  background: rgba(255, 255, 255, 0.98);
+}
+
+body.reading-mode .chatbot-window {
+  background: rgba(253, 245, 230, 0.98);
+}
+
+@keyframes chatSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Chat Header - Violet */
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  color: white;
+  flex-shrink: 0;
+}
+
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.chat-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-header-info h4 {
+  font-size: 1rem;
+  margin: 0 0 2px 0;
+  font-weight: 600;
+}
+
+.chat-status {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.chat-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-close:hover {
+  transform: rotate(90deg);
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 280px;
+  min-height: 200px;
+}
+
+/* Custom scrollbar for chat */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* Chat message bubbles */
+.chat-message {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  animation: messageFadeIn 0.3s ease;
+  word-wrap: break-word;
+}
+
+@keyframes messageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bot messages */
+.chat-message.bot {
+  background: rgba(139, 92, 246, 0.15);
+  color: #f8fafc;
+  align-self: flex-start;
+  border-bottom-left-radius: 6px;
+}
+
+body.light-mode .chat-message.bot {
+  background: rgba(139, 92, 246, 0.1);
+  color: #1e293b;
+}
+
+body.reading-mode .chat-message.bot {
+  background: rgba(124, 58, 237, 0.1);
+  color: #3d3222;
+}
+
+/* User messages */
+.chat-message.user {
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 6px;
+}
+
+/* Typing indicator */
+.chat-message.typing {
+  display: flex;
+  gap: 4px;
+  padding: 15px 20px;
+  background: rgba(139, 92, 246, 0.15);
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background: #a855f7;
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: 0s; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+}
+
+/* Chat Input - Violet */
+.chat-input-form {
+  display: flex;
+  padding: 15px;
+  gap: 10px;
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+  flex-shrink: 0;
+}
+
+.chat-input-form input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+  min-width: 0; /* Prevent overflow */
+}
+
+body.light-mode .chat-input-form input {
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.reading-mode .chat-input-form input {
+  color: #3d3222;
+  background: rgba(253, 245, 230, 0.9);
+}
+
+.chat-input-form input:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+.chat-input-form button {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.chat-input-form button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+}
+
+/* ========================================
+   BACKGROUND DECORATION
+   ======================================== */
+.contact-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.deco-circle.circle-1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  right: -100px;
+  animation: circleRotate 30s linear infinite;
+}
+
+.deco-circle.circle-2 {
+  width: 300px;
+  height: 300px;
+  bottom: 100px;
+  left: -100px;
+  animation: circleRotate 25s linear infinite reverse;
+}
+
+@keyframes circleRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   RESPONSIVE - TABLET (max-width: 992px)
+   ======================================== */
+@media (max-width: 992px) {
+  .contact-section {
+    padding: 100px 0 220px;
+  }
+  
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px;
+  }
+  
+  /* Reorder: Form first, then contact info on tablet */
+  .contact-left {
+    order: 2;
+  }
+  
+  .contact-form {
+    order: 1;
+  }
+  
+  .contact-form {
+    padding: 35px 30px;
+  }
+  
+  .contact-header {
+    margin-bottom: 50px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+   ======================================== */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 0 200px;
+  }
+  
+  .contact-header {
+    margin-bottom: 40px;
+  }
+  
+  .contact-wrapper {
+    gap: 30px;
+    padding: 0 15px;
+  }
+  
+  /* Stack form inputs vertically */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .contact-form {
+    padding: 25px 20px;
+    border-radius: 16px;
+  }
+  
+  .form-title {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+  }
+  
+  .input-wrapper input,
+  .input-wrapper textarea {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+  
+  .submit-btn {
+    padding: 14px 25px;
+    font-size: 1rem;
+  }
+  
+  /* Contact info cards */
+  .contact-info-card {
+    padding: 15px;
+    gap: 12px;
+  }
+  
+  .info-icon {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    font-size: 1.1rem;
+  }
+  
+  .info-value {
+    font-size: 0.85rem;
+  }
+  
+  .info-title {
+    font-size: 0.7rem;
+  }
+  
+  /* Social section */
+  .social-section {
+    padding: 20px;
+  }
+  
+  .social-icon-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+  
+  /* Chatbot adjustments */
+  .chatbot-container {
+    bottom: 160px;
+    right: 15px;
+  }
+  
+  .chatbot-toggle {
+    width: 55px;
+    height: 55px;
+    font-size: 1.3rem;
+  }
+  
+  .chatbot-window {
+    width: calc(100vw - 30px);
+    max-width: 350px;
+    right: 0;
+    bottom: 75px;
+    max-height: 420px;
+  }
+  
+  .chat-messages {
+    max-height: 220px;
+    min-height: 150px;
+    padding: 12px;
+  }
+  
+  .chat-message {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .chat-input-form {
+    padding: 12px;
+  }
+  
+  .chat-input-form input {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .chat-input-form button {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - SMALL MOBILE (max-width: 480px)
+   ======================================== */
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 70px 0 180px;
+  }
+  
+  .contact-header {
+    margin-bottom: 30px;
+  }
+  
+  .contact-wrapper {
+    padding: 0 12px;
+    gap: 25px;
+  }
+  
+  .contact-form {
+    padding: 20px 15px;
+    border-radius: 14px;
+  }
+  
+  .form-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-wrapper input,
+  .input-wrapper textarea {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .input-wrapper textarea {
+    min-height: 100px;
+  }
+  
+  .submit-btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+  
+  /* Contact info cards - smaller */
+  .contact-info-card {
+    padding: 12px;
+    gap: 10px;
+    border-radius: 10px;
+  }
+  
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 1rem;
+  }
+  
+  .icon-ring {
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+  }
+  
+  .info-value {
+    font-size: 0.8rem;
+  }
+  
+  .info-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .card-arrow {
+    font-size: 1rem;
+  }
+  
+  /* Social section */
+  .social-section {
+    padding: 18px 15px;
+    border-radius: 12px;
+  }
+  
+  .social-title {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .social-icons-grid {
+    gap: 12px;
+  }
+  
+  .social-icon-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+  
+  /* Hide tooltips on mobile - use touch instead */
+  .social-tooltip {
+    display: none;
+  }
+  
+  /* Chatbot - Mobile optimized */
+  .chatbot-container {
+    bottom: 140px;
+    right: 12px;
+  }
+  
+  .chatbot-toggle {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .chatbot-window {
+    width: calc(100vw - 24px);
+    right: -6px;
+    bottom: 65px;
+    max-height: 380px;
+    border-radius: 16px;
+  }
+  
+  .chat-header {
+    padding: 12px 15px;
+  }
+  
+  .chat-avatar {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .chat-header-info h4 {
+    font-size: 0.9rem;
+  }
+  
+  .chat-messages {
+    max-height: 200px;
+    min-height: 130px;
+    padding: 10px;
+    gap: 8px;
+  }
+  
+  .chat-message {
+    padding: 9px 12px;
+    font-size: 0.82rem;
+    max-width: 88%;
+    border-radius: 14px;
+  }
+  
+  .chat-message.bot {
+    border-bottom-left-radius: 5px;
+  }
+  
+  .chat-message.user {
+    border-bottom-right-radius: 5px;
+  }
+  
+  .chat-input-form {
+    padding: 10px;
+    gap: 8px;
+  }
+  
+  .chat-input-form input {
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    border-radius: 20px;
+  }
+  
+  .chat-input-form button {
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+  
+  /* Background decoration - smaller */
+  .deco-circle.circle-1 {
+    width: 250px;
+    height: 250px;
+    top: -80px;
+    right: -80px;
+  }
+  
+  .deco-circle.circle-2 {
+    width: 180px;
+    height: 180px;
+    bottom: 80px;
+    left: -60px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - EXTRA SMALL (max-width: 360px)
+   ======================================== */
+@media (max-width: 360px) {
+  .contact-section {
+    padding: 60px 0 160px;
+  }
+  
+  .contact-wrapper {
+    padding: 0 10px;
+    gap: 20px;
+  }
+  
+  .contact-form {
+    padding: 18px 12px;
+  }
+  
+  .form-title {
+    font-size: 1.1rem;
+  }
+  
+  .input-wrapper input,
+  .input-wrapper textarea {
+    padding: 11px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .submit-btn {
+    padding: 11px 18px;
+    font-size: 0.9rem;
+  }
+  
+  .contact-info-card {
+    padding: 10px;
+  }
+  
+  .info-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 0.9rem;
+  }
+  
+  .info-value {
+    font-size: 0.75rem;
+  }
+  
+  .chatbot-container {
+    bottom: 130px;
+    right: 10px;
+  }
+  
+  .chatbot-toggle {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .chatbot-window {
+    width: calc(100vw - 20px);
+    right: -5px;
+    max-height: 350px;
+  }
+}
+
+/* ========================================
+   GLASS CARD UTILITY CLASS
+   ======================================== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 16px;
+}
+
+body.light-mode .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+body.reading-mode .glass-card {
+  background: rgba(253, 245, 230, 0.85);
+  border-color: rgba(124, 58, 237, 0.15);
+}

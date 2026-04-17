@@ -1,0 +1,313 @@
+/* ========================================
+   ABOUT SECTION
+   Theme: Violet Blue Polish, Glass Cards
+   ======================================== */
+
+.about-section {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+/* ========================================
+   ABOUT STATS - Violet
+   ======================================== */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.about-stat {
+  position: relative;
+  padding: 40px 30px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.stat-value {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  /* Violet gradient */
+  background: linear-gradient(135deg, var(--neon-violet), var(--neon-purple), var(--neon-fuchsia));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6));
+  animation: statPulse 3s ease-in-out infinite;
+}
+
+@keyframes statPulse {
+  0%, 100% { filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6)); }
+  50% { filter: drop-shadow(0 0 25px rgba(139, 92, 246, 0.9)); }
+}
+
+.stat-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.stat-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-butter);
+}
+
+.about-stat:hover .stat-glow {
+  opacity: 1;
+  animation: glowSlide 2s ease infinite;
+}
+
+@keyframes glowSlide {
+  0%, 100% { left: 0; transform: translateX(0); }
+  50% { left: 100%; transform: translateX(-100%); }
+}
+
+/* ========================================
+   ABOUT CONTENT
+   ======================================== */
+.about-content {
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.about-text {
+  padding: 50px;
+  text-align: center;
+}
+
+.about-description {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+.about-description strong {
+  color: var(--neon-purple);
+  font-weight: 600;
+}
+
+.about-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px 30px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.15));
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+body.light-mode .about-highlight {
+  color: var(--text-light-primary);
+}
+
+.highlight-icon {
+  font-size: 1.5rem;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-5deg); }
+  75% { transform: translateY(-5px) rotate(5deg); }
+}
+
+/* ========================================
+   FEATURES GRID - Violet
+   ======================================== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.feature-card {
+  position: relative;
+  padding: 40px 25px;
+  text-align: center;
+  overflow: hidden;
+  animation: featureReveal 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes featureReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.3));
+  border-radius: 50%;
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  transition: all var(--transition-butter);
+}
+
+.icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-butter);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(10deg);
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+}
+
+.feature-card:hover .icon-glow {
+  opacity: 1;
+  animation: iconGlowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes iconGlowPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+}
+
+.feature-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+  transition: color var(--transition-butter);
+}
+
+body.light-mode .feature-title {
+  color: var(--text-light-primary);
+}
+
+.feature-card:hover .feature-title {
+  color: var(--neon-purple);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.feature-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.feature-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.feature-card:hover .feature-shine {
+  left: 100%;
+}
+
+/* ========================================
+   BACKGROUND DECORATION
+   ======================================== */
+.about-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.deco-frame {
+  position: absolute;
+  border: 2px solid rgba(139, 92, 246, 0.1);
+  border-radius: var(--radius-lg);
+}
+
+.frame-1 {
+  width: 200px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+  transform: rotate(-15deg);
+  animation: frameFloat 8s ease-in-out infinite;
+}
+
+.frame-2 {
+  width: 150px;
+  height: 200px;
+  bottom: 10%;
+  right: 5%;
+  transform: rotate(10deg);
+  animation: frameFloat 8s ease-in-out infinite reverse;
+}
+
+@keyframes frameFloat {
+  0%, 100% { transform: rotate(-15deg) translateY(0); }
+  50% { transform: rotate(-15deg) translateY(20px); }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .about-text {
+    padding: 30px;
+  }
+  
+  .about-highlight {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .feature-card {
+    padding: 30px 20px;
+  }
+}

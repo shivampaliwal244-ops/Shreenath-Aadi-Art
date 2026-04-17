@@ -1,0 +1,625 @@
+/* ========================================
+   NAVBAR STYLES - FIXED + GLASS TRANSPARENT
+   Theme: Violet Blue Polish
+   Changes:
+   - Removed logo animation (logoGlowPulse removed)
+   - Added CSS-only hover shine/glow effect
+   - Smooth transitions without animations
+   ======================================== */
+
+.navbar {
+  /* Fixed positioning - always visible */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 15px 0;
+  
+  /* Glass transparent effect - Violet tint */
+  background: rgba(10, 10, 18, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  
+  /* Smooth transitions */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrolled state - more visible glass effect */
+.navbar.scrolled {
+  background: rgba(10, 10, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 
+    0 5px 30px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(139, 92, 246, 0.1);
+  padding: 10px 0;
+}
+
+/* Light mode glass effect */
+body.light-mode .navbar {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+body.light-mode .navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(139, 92, 246, 0.2);
+}
+
+/* Reading mode glass effect - sepia tones */
+body.reading-mode .navbar {
+  background: rgba(253, 245, 230, 0.85);
+}
+
+body.reading-mode .navbar.scrolled {
+  background: rgba(253, 245, 230, 0.95);
+  border-bottom-color: rgba(139, 92, 246, 0.15);
+}
+
+/* Container */
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ========================================
+   LOGO - CSS-Only Hover Shine/Glow Effect
+   NO ANIMATIONS - Pure hover transitions
+   ======================================== */
+.navbar-logo {
+  position: relative;
+  text-decoration: none;
+  z-index: 1001;
+  display: inline-block;
+  overflow: hidden; /* Contains the shine effect */
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  /* Violet gradient */
+  background: linear-gradient(135deg, #8b5cf6, #a855f7, #d946ef);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Smooth hover transition - NO animation */
+  transition: filter 0.4s ease, transform 0.3s ease;
+  /* Base glow */
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo hover - Enhanced glow effect (CSS only, no animation) */
+.navbar-logo:hover .logo-text {
+  filter: 
+    drop-shadow(0 0 15px rgba(139, 92, 246, 0.9)) 
+    drop-shadow(0 0 30px rgba(168, 85, 247, 0.7))
+    drop-shadow(0 0 45px rgba(192, 132, 252, 0.5));
+  transform: scale(1.03);
+}
+
+/* Logo shine effect - sweeping highlight on hover */
+.logo-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    transparent 100%
+  );
+  /* Smooth transition - moves across on hover */
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Shine sweeps across on hover */
+.navbar-logo:hover .logo-shine {
+  left: 100%;
+}
+
+/* Light mode logo adjustments */
+body.light-mode .logo-text {
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.5));
+}
+
+body.light-mode .navbar-logo:hover .logo-text {
+  filter: 
+    drop-shadow(0 0 12px rgba(139, 92, 246, 0.8)) 
+    drop-shadow(0 0 25px rgba(168, 85, 247, 0.6));
+}
+
+/* Reading mode logo adjustments */
+body.reading-mode .logo-text {
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.4));
+}
+
+/* ========================================
+   NAVIGATION MENU - Desktop
+   ======================================== */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  position: relative;
+  display: block;
+  padding: 12px 20px;
+  color: #f8fafc;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+body.light-mode .nav-link {
+  color: #1e293b;
+}
+
+body.reading-mode .nav-link {
+  color: #3d3222;
+}
+
+.nav-link span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+/* Nav link glow background - Violet */
+.nav-link-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+}
+
+/* Underline animation - Violet */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5cf6, #a855f7);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
+}
+
+.nav-link:hover {
+  color: #a855f7;
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.nav-link:hover .nav-link-glow {
+  opacity: 1;
+}
+
+.nav-link:hover::before {
+  width: 80%;
+}
+
+/* ========================================
+   NAVBAR RIGHT SECTION
+   ======================================== */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Theme Toggle Button - Glass Effect - Violet */
+/* 3-state toggle: Light (white/sun) → Dark (moon) → Reading (book) */
+.theme-toggle {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+  color: #a855f7;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* Light mode toggle - white background */
+body.light-mode .theme-toggle {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+body.light-mode .toggle-icon {
+  color: #f59e0b; /* Sun color - amber/yellow */
+}
+
+/* Reading mode toggle */
+body.reading-mode .theme-toggle {
+  background: rgba(253, 245, 230, 0.9);
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+body.reading-mode .toggle-icon {
+  color: #7c3aed; /* Book icon color */
+}
+
+.toggle-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  border-color: #a855f7;
+  box-shadow: 
+    0 0 25px rgba(139, 92, 246, 0.6),
+    0 0 50px rgba(139, 92, 246, 0.3);
+}
+
+.theme-toggle:hover .toggle-icon {
+  transform: rotate(-15deg);
+}
+
+.theme-toggle:hover .toggle-glow {
+  opacity: 1;
+}
+
+/* ========================================
+   HAMBURGER MENU - Mobile
+   ======================================== */
+.hamburger {
+  display: none;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  z-index: 1001;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light-mode .hamburger {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.reading-mode .hamburger {
+  background: rgba(253, 245, 230, 0.9);
+}
+
+.hamburger-lines {
+  position: relative;
+  width: 24px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #8b5cf6, #a855f7);
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.hamburger-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger:hover {
+  border-color: #a855f7;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
+}
+
+.hamburger:hover .hamburger-glow {
+  opacity: 1;
+}
+
+.hamburger:hover .line {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.8);
+}
+
+/* Hamburger Animation to X */
+.hamburger-lines.open .line-1 {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-lines.open .line-2 {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburger-lines.open .line-3 {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ========================================
+   MOBILE MENU - Full Screen Overlay
+   ======================================== */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(10, 10, 18, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+}
+
+body.light-mode .mobile-menu {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+body.reading-mode .mobile-menu {
+  background: rgba(253, 245, 230, 0.95);
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.mobile-nav-link {
+  position: relative;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f8fafc;
+  text-decoration: none;
+  padding: 15px 40px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+body.light-mode .mobile-nav-link {
+  color: #1e293b;
+}
+
+body.reading-mode .mobile-nav-link {
+  color: #3d3222;
+}
+
+.mobile-menu.active .mobile-nav-link {
+  opacity: 1;
+  transform: translateY(0);
+  animation: mobileNavFadeIn 0.5s ease forwards;
+}
+
+@keyframes mobileNavFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-link-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.3));
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+}
+
+.mobile-nav-link:hover {
+  color: #a855f7;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  transform: scale(1.05);
+}
+
+.mobile-nav-link:hover .mobile-link-glow {
+  opacity: 1;
+}
+
+/* Mobile theme indicator */
+.mobile-theme-indicator {
+  margin-top: 30px;
+  padding: 10px 25px;
+  background: rgba(139, 92, 246, 0.2);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #a855f7;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+/* ========================================
+   RESPONSIVE - All Screen Sizes
+   ======================================== */
+
+/* Tablet and below */
+@media (max-width: 992px) {
+  .nav-menu {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .navbar-container {
+    padding: 0 20px;
+  }
+}
+
+/* Mobile landscape and small tablets */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 0;
+  }
+  
+  .navbar.scrolled {
+    padding: 8px 0;
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+  }
+  
+  .mobile-nav-link {
+    font-size: 1.5rem;
+    padding: 12px 30px;
+  }
+  
+  .theme-toggle,
+  .hamburger {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .toggle-icon {
+    font-size: 1.1rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 15px;
+  }
+  
+  .logo-text {
+    font-size: 1.3rem;
+  }
+  
+  .theme-toggle,
+  .hamburger {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .toggle-icon {
+    font-size: 1rem;
+  }
+  
+  .hamburger-lines {
+    width: 20px;
+    height: 15px;
+  }
+  
+  .line {
+    height: 2.5px;
+  }
+  
+  .mobile-nav-link {
+    font-size: 1.3rem;
+    padding: 10px 25px;
+  }
+  
+  .mobile-menu-content {
+    gap: 18px;
+  }
+  
+  .navbar-right {
+    gap: 10px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .logo-text {
+    font-size: 1.1rem;
+  }
+  
+  .theme-toggle,
+  .hamburger {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .mobile-nav-link {
+    font-size: 1.2rem;
+  }
+}
