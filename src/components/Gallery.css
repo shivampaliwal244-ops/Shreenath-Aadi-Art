@@ -1,5 +1,5 @@
 /* ========================================
-   GALLERY SECTION - CLEAN & FAST
+   GALLERY SECTION - OPTIMIZED
    ======================================== */
 .gallery-section {
   padding: 80px 0;
@@ -15,7 +15,7 @@
   padding: 0 20px;
 }
 
-/* Section Title */
+/* Section Title with Neon Effect */
 .neon-text {
   font-size: 2.2rem;
   text-transform: uppercase;
@@ -25,11 +25,12 @@
   margin-bottom: 20px;
 }
 
-/* View Gallery Button */
+/* View Gallery Button Container */
 .view-gallery-container {
   margin-top: 30px;
 }
 
+/* Gradient Button with Hover Effects */
 .view-gallery-btn {
   display: inline-flex;
   align-items: center;
@@ -42,8 +43,10 @@
   font-weight: 600;
   border-radius: 30px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  /* GPU acceleration for smooth hover */
+  will-change: transform;
 }
 
 .view-gallery-btn:hover {
@@ -56,31 +59,58 @@
 }
 
 /* ========================================
-   POPUP - SIMPLE & FAST
+   POPUP - PERFORMANCE OPTIMIZED
    ======================================== */
 .gallery-popup {
   position: fixed;
   inset: 0;
-  background: rgba(10, 8, 18, 0.95);
+  background: rgba(10, 8, 18, 0.97);
   z-index: 2000;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 20px;
-  animation: fadeIn 0.2s ease;
+  animation: fadeIn 0.25s ease-out;
+  /* Smooth scrolling for better UX */
+  scroll-behavior: smooth;
+  /* Hardware acceleration */
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar for cleaner look (optional) */
+  scrollbar-width: thin;
+  scrollbar-color: #8b5cf6 #1a1625;
 }
 
+/* Custom scrollbar for webkit browsers */
+.gallery-popup::-webkit-scrollbar {
+  width: 8px;
+}
+
+.gallery-popup::-webkit-scrollbar-track {
+  background: #1a1625;
+}
+
+.gallery-popup::-webkit-scrollbar-thumb {
+  background: #8b5cf6;
+  border-radius: 4px;
+}
+
+/* Fade in animation */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
 }
 
-/* Close Button - FIXED POSITION */
+/* Close Button - Fixed Position Always Visible */
 .popup-close-btn {
   position: fixed;
   top: 20px;
   right: 20px;
   width: 50px;
   height: 50px;
-  background: #1a1625;
+  background: rgba(26, 22, 37, 0.95);
   border: 2px solid #8b5cf6;
   border-radius: 50%;
   color: #fff;
@@ -89,7 +119,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.2s ease, background 0.2s ease;
+  /* Prevent button from being cut off */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .popup-close-btn:hover {
@@ -101,64 +134,104 @@
   transform: scale(0.95);
 }
 
-/* Content Container */
+/* Popup Content Container */
 .gallery-popup-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 60px;
+  padding-top: 70px;
+  padding-bottom: 40px;
 }
 
 /* ========================================
-   GALLERY GRID - RESPONSIVE
+   GALLERY GRID - GPU OPTIMIZED
    ======================================== */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  /* Contain paint to grid only */
+  contain: layout style;
 }
 
+/* Individual Gallery Item */
 .gallery-item {
   background: #1a1625;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid rgba(139, 92, 246, 0.2);
-  transition: transform 0.2s, border-color 0.2s;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  /* GPU acceleration for smooth animations */
+  will-change: transform;
+  transform: translateZ(0);
+  /* Fade in effect when image loads */
+  opacity: 0.7;
+}
+
+/* Loaded state - full opacity */
+.gallery-item.loaded {
+  opacity: 1;
 }
 
 .gallery-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) translateZ(0);
   border-color: rgba(139, 92, 246, 0.5);
 }
 
-/* Image Wrapper */
+/* Image Container with Aspect Ratio */
 .image-wrapper {
   position: relative;
   aspect-ratio: 4/5;
   overflow: hidden;
+  background: #0f0d18;
 }
 
-.image-wrapper img {
+/* Main Image Styling */
+.image-wrapper img:first-of-type {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  /* Prevent image dragging */
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
-.gallery-item:hover .image-wrapper img {
+/* Image zoom on hover */
+.gallery-item:hover .image-wrapper img:first-of-type {
   transform: scale(1.05);
 }
 
-/* Watermark */
+/* ========================================
+   WATERMARK - SMALL TOP RIGHT CORNER
+   ======================================== */
 .watermark {
   position: absolute;
+  /* Position: Top Right Corner */
   top: 8px;
   right: 8px;
-  width: 30px;
+  /* Small size - doesn't obstruct image */
+  width: 28px;
   height: auto;
-  opacity: 0.7;
+  /* Subtle visibility */
+  opacity: 0.6;
+  /* Pointer events none so clicks pass through */
+  pointer-events: none;
+  /* Slight shadow for visibility on light images */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  /* Smooth transition */
+  transition: opacity 0.2s ease;
+  /* Ensure it stays on top */
+  z-index: 5;
 }
 
-/* Image Overlay */
+/* Slightly more visible watermark on hover */
+.gallery-item:hover .watermark {
+  opacity: 0.75;
+}
+
+/* ========================================
+   IMAGE OVERLAY - BOTTOM GRADIENT
+   ======================================== */
 .image-overlay {
   position: absolute;
   bottom: 0;
@@ -167,22 +240,27 @@
   padding: 12px;
   background: linear-gradient(transparent, rgba(10, 8, 18, 0.9));
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  /* Ensure overlay is above image but below watermark */
+  z-index: 3;
 }
 
+/* Show overlay on hover */
 .gallery-item:hover .image-overlay {
   opacity: 1;
 }
 
+/* Overlay Title */
 .overlay-title {
   font-size: 0.9rem;
   color: #fff;
   font-weight: 500;
 }
 
+/* Overlay Category Tag */
 .overlay-category {
   font-size: 0.75rem;
   color: #8b5cf6;
@@ -190,10 +268,8 @@
 }
 
 /* ========================================
-   RESPONSIVE - MOBILE FIRST
+   RESPONSIVE - TABLET (max-width: 900px)
    ======================================== */
-
-/* Tablet */
 @media (max-width: 900px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -206,9 +282,22 @@
     top: 15px;
     right: 15px;
   }
+  
+  .gallery-popup-content {
+    padding-top: 60px;
+  }
+  
+  /* Slightly smaller watermark on tablet */
+  .watermark {
+    width: 24px;
+    top: 6px;
+    right: 6px;
+  }
 }
 
-/* Mobile */
+/* ========================================
+   RESPONSIVE - MOBILE (max-width: 600px)
+   ======================================== */
 @media (max-width: 600px) {
   .gallery-section {
     padding: 60px 0;
@@ -225,11 +314,12 @@
   }
   
   .gallery-popup {
-    padding: 15px;
+    padding: 12px;
   }
   
   .gallery-popup-content {
-    padding-top: 50px;
+    padding-top: 55px;
+    padding-bottom: 20px;
   }
   
   .gallery-grid {
@@ -239,6 +329,17 @@
   
   .gallery-item {
     border-radius: 8px;
+    /* Remove hover transform on mobile for better performance */
+    will-change: auto;
+  }
+  
+  /* Disable hover effects on mobile */
+  .gallery-item:hover {
+    transform: none;
+  }
+  
+  .gallery-item:hover .image-wrapper img:first-of-type {
+    transform: none;
   }
   
   .popup-close-btn {
@@ -248,15 +349,19 @@
     right: 10px;
   }
   
+  /* Small watermark on mobile */
   .watermark {
-    width: 24px;
-    top: 6px;
-    right: 6px;
+    width: 22px;
+    top: 5px;
+    right: 5px;
+    opacity: 0.5;
   }
   
+  /* Always show overlay on mobile (no hover) */
   .image-overlay {
     padding: 8px;
-    opacity: 1; /* Always show on mobile */
+    opacity: 1;
+    background: linear-gradient(transparent 30%, rgba(10, 8, 18, 0.85));
   }
   
   .overlay-title {
@@ -268,12 +373,15 @@
   }
 }
 
-/* Small Mobile */
+/* ========================================
+   RESPONSIVE - SMALL MOBILE (max-width: 400px)
+   ======================================== */
 @media (max-width: 400px) {
   .neon-text {
     font-size: 1.4rem;
   }
   
+  /* Single column for very small screens */
   .gallery-grid {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -283,4 +391,69 @@
     width: 40px;
     height: 40px;
   }
+  
+  /* Tiny watermark on small mobile */
+  .watermark {
+    width: 20px;
+    top: 4px;
+    right: 4px;
+  }
+  
+  .gallery-popup {
+    padding: 10px;
+  }
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-popup {
+    animation: none;
+    scroll-behavior: auto;
+  }
+  
+  .gallery-item,
+  .view-gallery-btn,
+  .popup-close-btn,
+  .image-wrapper img,
+  .image-overlay,
+  .watermark {
+    transition: none;
+  }
+  
+  .gallery-item:hover .image-wrapper img:first-of-type {
+    transform: none;
+  }
+}
+
+/* Loading placeholder shimmer effect */
+.gallery-item:not(.loaded) .image-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #1a1625 0%,
+    #252033 50%,
+    #1a1625 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Remove shimmer when loaded */
+.gallery-item.loaded .image-wrapper::before {
+  display: none;
 }

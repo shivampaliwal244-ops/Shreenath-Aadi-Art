@@ -1,39 +1,54 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import './Gallery.css'
 
 const Gallery = () => {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
   const [loadedImages, setLoadedImages] = useState({})
 
-  // 40 demo images
-  const images = Array.from({ length: 40 }, (_, i) => ({
-    id: i + 1,
-    src: `/images/${i + 1}.jpg`,
-    alt: `Handmade Frame ${i + 1}`,
-    category: ['classic', 'modern', 'ornate', 'rustic'][i % 4],
-  }))
+  // Memoize images array to prevent re-creation on every render
+  const images = useMemo(() => 
+    Array.from({ length: 40 }, (_, i) => ({
+      id: i + 1,
+      src: `/images/${i + 1}.jpg`,
+      alt: `Handmade Frame ${i + 1}`,
+      category: ['classic', 'modern', 'ornate', 'rustic'][i % 4],
+    })), []
+  )
 
+  // Track loaded images for fade-in effect
   const handleImageLoad = useCallback((id) => {
     setLoadedImages(prev => ({ ...prev, [id]: true }))
   }, [])
 
-  const openGallery = () => {
+  // Open gallery and prevent body scroll
+  const openGallery = useCallback(() => {
     setIsGalleryOpen(true)
     document.body.style.overflow = 'hidden'
-  }
+  }, [])
 
-  const closeGallery = () => {
+  // Close gallery and restore body scroll
+  const closeGallery = useCallback(() => {
     setIsGalleryOpen(false)
     document.body.style.overflow = 'auto'
-  }
+  }, [])
 
+  // Handle Escape key to close gallery
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isGalleryOpen) closeGallery()
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isGalleryOpen])
+  }, [isGalleryOpen, closeGallery])
+
+  // Preload first few images when component mounts for faster initial load
+  useEffect(() => {
+    const preloadCount = 6
+    images.slice(0, preloadCount).forEach(img => {
+      const image = new Image()
+      image.src = img.src
+    })
+  }, [images])
 
   return (
     <section id="gallery" className="gallery-section">
@@ -52,18 +67,25 @@ const Gallery = () => {
         </div>
       </div>
 
-      {/* Gallery Popup */}
+      {/* Gallery Popup - Only render when open */}
       {isGalleryOpen && (
         <div className="gallery-popup" onClick={closeGallery}>
-          {/* Fixed Close Button - Always Visible */}
-          <button className="popup-close-btn" onClick={closeGallery}>
+          {/* Fixed Close Button */}
+          <button 
+            className="popup-close-btn" 
+            onClick={(e) => {
+              e.stopPropagation()
+              closeGallery()
+            }}
+            aria-label="Close gallery"
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M18 6L6 18M6 6l12 12"/>
             </svg>
           </button>
 
           <div className="gallery-popup-content" onClick={(e) => e.stopPropagation()}>
-            {/* Grid Gallery */}
+            {/* Optimized Grid Gallery */}
             <div className="gallery-grid">
               {images.map((image) => (
                 <div 
@@ -71,20 +93,27 @@ const Gallery = () => {
                   className={`gallery-item ${loadedImages[image.id] ? 'loaded' : ''}`}
                 >
                   <div className="image-wrapper">
+                    {/* Main Image with lazy loading */}
                     <img
                       src={image.src}
                       alt={image.alt}
                       loading="lazy"
+                      decoding="async"
                       onLoad={() => handleImageLoad(image.id)}
                       onError={(e) => {
                         e.target.src = `[picsum.photos](https://picsum.photos/400/500?random=${image.id})`
                       }}
                     />
                     
-                    {/* Simple Watermark */}
-                    <img src="/logo.png" alt="" className="watermark" />
+                    {/* Small Watermark - Top Right Corner */}
+                    <img 
+                      src="/logo.png" 
+                      alt="" 
+                      className="watermark"
+                      loading="lazy"
+                    />
                     
-                    {/* Hover Info */}
+                    {/* Hover Overlay with Image Info */}
                     <div className="image-overlay">
                       <span className="overlay-title">Frame #{image.id}</span>
                       <span className="overlay-category">{image.category}</span>
