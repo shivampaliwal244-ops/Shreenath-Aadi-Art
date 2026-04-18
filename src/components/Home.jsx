@@ -62,9 +62,10 @@ const Home = () => {
 
           {/* Subtitle */}
           <p className="hero-subtitle">
-            We create unique handmade wooden frames with love and craftsmanship.
+            We design and craft high-quality 3D, 4D and 5D wooden and glass frames with premium finishing.  
+Our expertise includes gold emboss work, Jain religious frames, Shreenathji artwork and custom photo frames.
             <br />
-            Every piece is designed to make your memories special.
+            Bring your memories to life with elegant and artistic craftsmanship.
           </p>
 
           {/* CTA Buttons */}

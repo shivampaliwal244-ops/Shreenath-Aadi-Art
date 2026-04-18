@@ -11,7 +11,7 @@ const About = () => {
     },
     {
       icon: '🪵',
-      title: 'Premium Wood',
+      title: '3D 4D 5D Premium Wood',
       description: 'We use only the finest quality wood for lasting durability'
     },
     {
@@ -57,14 +57,24 @@ const About = () => {
         <div className="about-content">
           <div className="about-text glass-card">
             <p className="about-description">
-              At <strong>Sandeep Art</strong>, we specialize in creating handmade wooden frames 
-              that reflect creativity and passion. Each frame is crafted with care 
-              to give your photos a unique and artistic touch.
-            </p>
+              At <strong>Paliwal Artist</strong>, we specialize in creating premium handcrafted wooden and glass frames with stunning 3D, 4D and 5D artistic effects. With over <strong>20+ years of experience</strong>, we bring tradition, creativity and modern design together to create truly unique masterpieces.
+</p>
+
+<p>
+We offer a wide range of customized artworks including <strong>gold emboss paintings, Jain religious art, Shreenathji glass frames, and personalized photo frames</strong>. Every piece is carefully designed with attention to detail, ensuring high quality, durability and a premium finish.
+</p>
+
+<p>
+Whether it's a religious artwork, a memory frame, or a custom design, we transform your ideas into beautiful creations that last forever.
+</p>
+
+<p>
+Our mission is to deliver <strong>high-quality artistic frames</strong> that reflect emotions, culture and craftsmanship.
+</p>
             <p className="about-highlight">
               <span className="highlight-icon">🖼️</span>
               We can create any type of frame you desire - from classic to contemporary, 
-              simple to ornate. Your imagination is our only limit.
+              simple to ornate an type of 3D 4d wooden glass frames. Your imagination is our only limit.
             </p>
           </div>
         </div>
