@@ -121,7 +121,7 @@ const Gallery = () => {
                     */}
                     <div className="image-overlay">
                       {/* "Aadi Art" text with neon black glowing effect */}
-                      <span className="overlay-title">Aadi Art</span>
+                      <span className="overlay-title">Aadi Art <br /> 9782715560</span>
                       <span className="overlay-category">{image.category}</span>
                     </div>
                   </div>
