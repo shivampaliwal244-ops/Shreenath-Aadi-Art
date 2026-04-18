@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.shreenath-aadi-art.in/sitemap.xml
