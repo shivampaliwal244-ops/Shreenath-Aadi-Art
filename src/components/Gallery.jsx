@@ -1,4 +1,4 @@
-// Gallery.jsx - Updated with enhanced watermark visibility
+// Gallery.jsx - Updated with "Aadi Art" text overlay instead of Frame numbers
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import './Gallery.css'
 
@@ -128,9 +128,13 @@ const Gallery = () => {
                       />
                     </div>
                     
-                    {/* Hover overlay showing image details */}
+                    {/* 
+                      UPDATED: Hover overlay now shows "Aadi Art" in dark black
+                      instead of "Frame #1, #2..." etc.
+                    */}
                     <div className="image-overlay">
-                      <span className="overlay-title">Frame #{image.id}</span>
+                      {/* Changed from Frame #{image.id} to "Aadi Art" */}
+                      <span className="overlay-title">Aadi Art</span>
                       <span className="overlay-category">{image.category}</span>
                     </div>
                   </div>
