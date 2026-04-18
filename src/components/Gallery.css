@@ -1,4 +1,4 @@
-/* Gallery.css - Updated with dark black "Aadi Art" text styling */
+/* Gallery.css - Updated: Watermark removed, "Aadi Art" has neon black glow hover effect */
 /* Optimized for smooth mobile experience on old and new smartphones */
 
 /* ========================================
@@ -194,7 +194,7 @@
 }
 
 /* Main Product Image */
-.image-wrapper img:first-of-type {
+.image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -207,70 +207,18 @@
 }
 
 /* Subtle zoom effect on hover */
-.gallery-item:hover .image-wrapper img:first-of-type {
+.gallery-item:hover .image-wrapper img {
   transform: scale(1.05);
 }
 
 /* ========================================
-   WATERMARK - AADI ART LOGO
-   Large, visible with dark glow effect
+   WATERMARK SECTION - REMOVED
+   All watermark styles have been removed
    ======================================== */
-
-/* Watermark Container - Positions the logo */
-.watermark-container {
-  position: absolute;
-  /* Top right corner positioning */
-  top: 12px;
-  right: 12px;
-  /* Ensure watermark stays above other elements */
-  z-index: 10;
-  /* Clicks pass through to image below */
-  pointer-events: none;
-}
-
-/* Watermark Logo Image */
-.watermark {
-  /* LARGER SIZE for better visibility */
-  width: 60px;
-  height: auto;
-  /* Semi-transparent for non-intrusive branding */
-  opacity: 0.85;
-  /* 
-    DARK BLACK GLOW EFFECT
-    Multiple shadow layers create depth and visibility
-    Works on both light and dark images
-  */
-  filter: 
-    /* Outer dark glow - large spread */
-    drop-shadow(0 0 8px rgba(0, 0, 0, 0.9))
-    /* Middle dark glow - medium spread */
-    drop-shadow(0 0 4px rgba(0, 0, 0, 0.8))
-    /* Inner sharp shadow - crisp edge */
-    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9))
-    /* Extra contrast layer */
-    drop-shadow(0 0 12px rgba(0, 0, 0, 0.7));
-  /* Smooth opacity transition on hover */
-  transition: opacity 0.2s ease, filter 0.2s ease;
-  /* Prevent dragging */
-  -webkit-user-drag: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-}
-
-/* Slightly more visible watermark on card hover */
-.gallery-item:hover .watermark {
-  opacity: 0.95;
-  /* Enhanced glow on hover for extra pop */
-  filter: 
-    drop-shadow(0 0 10px rgba(0, 0, 0, 1))
-    drop-shadow(0 0 6px rgba(0, 0, 0, 0.9))
-    drop-shadow(0 2px 6px rgba(0, 0, 0, 1))
-    drop-shadow(0 0 15px rgba(0, 0, 0, 0.8));
-}
 
 /* ========================================
    IMAGE OVERLAY - Bottom Info Panel
-   UPDATED: "Aadi Art" text in DARK BLACK color
+   "Aadi Art" text with NEON BLACK GLOW HOVER EFFECT
    ======================================== */
 .image-overlay {
   position: absolute;
@@ -294,21 +242,59 @@
 }
 
 /* 
-  UPDATED: "Aadi Art" title text in DARK BLACK color
-  Same size and position as before (was Frame #1, #2, etc.)
+  "Aadi Art" title text with NEON BLACK GLOW EFFECT
+  Dark text with glowing black/dark purple neon aura
+  Size and position remain the same as before
 */
 .overlay-title {
   font-size: 0.9rem;
-  /* CHANGED: Dark black color instead of white */
+  /* Dark black base color */
   color: #0a0a0a;
   font-weight: 600;
-  /* Text shadow for better readability on dark gradient background */
-  text-shadow: 
-    0 0 8px rgba(255, 255, 255, 0.9),
-    0 0 4px rgba(255, 255, 255, 0.8),
-    0 1px 2px rgba(255, 255, 255, 0.7);
-  /* Slightly larger letter spacing for elegance */
   letter-spacing: 0.5px;
+  /* 
+    NEON BLACK GLOW EFFECT
+    Multiple layered shadows create the glowing neon effect:
+    - Inner white glow for contrast against dark gradient
+    - Outer dark purple/black glow for neon effect
+  */
+  text-shadow: 
+    /* Inner white glow - makes text readable */
+    0 0 2px rgba(255, 255, 255, 0.9),
+    0 0 4px rgba(255, 255, 255, 0.7),
+    /* Neon black/dark purple outer glow */
+    0 0 8px rgba(20, 10, 30, 0.8),
+    0 0 12px rgba(30, 15, 45, 0.6),
+    0 0 20px rgba(40, 20, 60, 0.5),
+    /* Extended glow for neon effect */
+    0 0 30px rgba(50, 25, 75, 0.4);
+  /* Smooth transition for hover effect */
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+/* 
+  HOVER STATE - Enhanced neon glow effect
+  Glow intensifies when hovering over the card
+*/
+.gallery-item:hover .overlay-title {
+  /* Slightly lighter black for contrast */
+  color: #0d0d0d;
+  /* 
+    INTENSIFIED NEON BLACK GLOW on hover
+    Stronger, more vibrant glow effect
+  */
+  text-shadow: 
+    /* Brighter inner white glow */
+    0 0 3px rgba(255, 255, 255, 1),
+    0 0 6px rgba(255, 255, 255, 0.85),
+    0 0 10px rgba(255, 255, 255, 0.6),
+    /* Intense dark purple/black neon glow */
+    0 0 15px rgba(20, 10, 35, 0.9),
+    0 0 25px rgba(30, 15, 50, 0.7),
+    0 0 40px rgba(50, 25, 80, 0.6),
+    0 0 60px rgba(60, 30, 90, 0.4),
+    /* Extra spread for dramatic effect */
+    0 0 80px rgba(70, 35, 100, 0.3);
 }
 
 /* Category tag - remains purple */
@@ -337,16 +323,6 @@
   
   .gallery-popup-content {
     padding-top: 60px;
-  }
-  
-  /* Slightly smaller watermark on tablet */
-  .watermark-container {
-    top: 10px;
-    right: 10px;
-  }
-  
-  .watermark {
-    width: 50px;
   }
 }
 
@@ -399,7 +375,7 @@
     transform: none;
   }
   
-  .gallery-item:hover .image-wrapper img:first-of-type {
+  .gallery-item:hover .image-wrapper img {
     transform: none;
   }
   
@@ -414,24 +390,6 @@
     background: rgba(26, 22, 37, 0.98);
   }
   
-  /* Mobile watermark - still visible but slightly smaller */
-  .watermark-container {
-    top: 8px;
-    right: 8px;
-  }
-  
-  .watermark {
-    width: 42px;
-    opacity: 0.8;
-    /* Stronger glow on mobile for visibility */
-    filter: 
-      drop-shadow(0 0 6px rgba(0, 0, 0, 0.95))
-      drop-shadow(0 0 3px rgba(0, 0, 0, 0.9))
-      drop-shadow(0 1px 3px rgba(0, 0, 0, 0.95));
-    /* Disable transition on mobile for performance */
-    transition: none;
-  }
-  
   /* Always show overlay on mobile - no hover on touch */
   .image-overlay {
     padding: 8px;
@@ -439,15 +397,27 @@
     background: linear-gradient(transparent 30%, rgba(10, 8, 18, 0.85));
   }
   
-  /* "Aadi Art" title on mobile */
+  /* "Aadi Art" title on mobile with neon black glow */
   .overlay-title {
     font-size: 0.8rem;
-    /* Keep dark black color */
     color: #0a0a0a;
-    /* Adjusted text shadow for mobile */
+    /* Optimized neon glow for mobile - fewer layers for performance */
     text-shadow: 
-      0 0 6px rgba(255, 255, 255, 0.95),
-      0 0 3px rgba(255, 255, 255, 0.9);
+      0 0 2px rgba(255, 255, 255, 0.95),
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(25, 12, 40, 0.7),
+      0 0 20px rgba(40, 20, 60, 0.5);
+    /* Disable transition on mobile for performance */
+    transition: none;
+  }
+  
+  /* No hover state change on mobile - overlay always visible */
+  .gallery-item:hover .overlay-title {
+    text-shadow: 
+      0 0 2px rgba(255, 255, 255, 0.95),
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(25, 12, 40, 0.7),
+      0 0 20px rgba(40, 20, 60, 0.5);
   }
   
   .overlay-category {
@@ -475,16 +445,6 @@
     height: 40px;
   }
   
-  /* Watermark remains visible on small mobile */
-  .watermark-container {
-    top: 8px;
-    right: 8px;
-  }
-  
-  .watermark {
-    width: 38px;
-  }
-  
   .gallery-popup {
     padding: 10px;
   }
@@ -510,11 +470,11 @@
   .popup-close-btn,
   .image-wrapper img,
   .image-overlay,
-  .watermark {
+  .overlay-title {
     transition: none;
   }
   
-  .gallery-item:hover .image-wrapper img:first-of-type {
+  .gallery-item:hover .image-wrapper img {
     transform: none;
   }
 }

@@ -1,4 +1,4 @@
-// Gallery.jsx - Updated with "Aadi Art" text overlay instead of Frame numbers
+// Gallery.jsx - Updated: Watermark removed, "Aadi Art" text has neon black glow effect
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import './Gallery.css'
 
@@ -113,27 +113,14 @@ const Gallery = () => {
                       }}
                     />
                     
-                    {/* 
-                      WATERMARK - Aadi Art Logo
-                      Positioned top-right with dark glow for visibility
-                      on both light and dark images
-                    */}
-                    <div className="watermark-container">
-                      <img 
-                        src="/logo.png" 
-                        alt="Aadi Art" 
-                        className="watermark"
-                        loading="lazy"
-                        draggable="false"
-                      />
-                    </div>
+                    {/* WATERMARK REMOVED - No longer rendering logo watermark */}
                     
                     {/* 
-                      UPDATED: Hover overlay now shows "Aadi Art" in dark black
-                      instead of "Frame #1, #2..." etc.
+                      Hover overlay with "Aadi Art" in neon black glow effect
+                      Position and size remain the same as before
                     */}
                     <div className="image-overlay">
-                      {/* Changed from Frame #{image.id} to "Aadi Art" */}
+                      {/* "Aadi Art" text with neon black glowing effect */}
                       <span className="overlay-title">Aadi Art</span>
                       <span className="overlay-category">{image.category}</span>
                     </div>
