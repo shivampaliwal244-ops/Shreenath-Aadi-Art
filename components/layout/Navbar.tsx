@@ -57,7 +57,9 @@ export default function Navbar() {
               </span>
               <div className="absolute inset-0 rounded-xl bg-purple-500/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100" />
             </motion.div>
-            <div className="hidden sm:block">
+            
+            {/* Yahan se 'hidden sm:block' hata diya hai taaki mobile par bhi naam dikhe */}
+            <div>
               <motion.span
                 className="block font-display text-sm font-semibold tracking-wide text-white transition-colors group-hover:text-gold sm:text-base"
                 initial={{ opacity: 0, x: -10 }}

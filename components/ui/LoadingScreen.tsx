@@ -1,25 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BRAND } from "@/lib/constants";
 
 export default function LoadingScreen() {
   const [visible, setVisible] = useState(true);
   const [fading, setFading] = useState(false);
-  // 1. Ek naya state banayein check karne ke liye ki component mount hua ya nahi
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // 2. Client par aate hi isse true set kar dein
-    setIsMounted(true);
-    
+    // 1. Logic simplify kiya (No setState inside effect loop issues)
     const fadeTimer = setTimeout(() => setFading(true), 2200);
     const hideTimer = setTimeout(() => setVisible(false), 3000);
+    
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(hideTimer);
     };
+  }, []);
+
+  // 2. Deterministic logic (Koi Math.random() nahi, build pass ho jayega)
+  const particles = useMemo(() => {
+    return Array.from({ length: 20 }).map((_, i) => ({
+      id: i,
+      left: (i * 13) % 100,
+      top: (i * 17) % 100,
+      duration: 2 + (i % 3),
+      delay: (i % 5) * 0.4,
+    }));
   }, []);
 
   return (
@@ -30,26 +38,20 @@ export default function LoadingScreen() {
           animate={{ opacity: fading ? 0 : 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black-deep"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black"
           aria-hidden="true"
         >
-          {/* Particles - 3. Inhe tabhi render karein jab isMounted true ho */}
-          {isMounted && [...Array(20)].map((_, i) => (
+          {/* Deterministic Particles */}
+          {particles.map((p) => (
             <motion.div
-              key={i}
+              key={p.id}
               className="absolute h-1 w-1 rounded-full bg-gold/60"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1.5, 0],
-              }}
+              style={{ left: `${p.left}%`, top: `${p.top}%` }}
+              animate={{ opacity: [0, 1, 0], scale: [0, 1.5, 0] }}
               transition={{
-                duration: 2 + Math.random() * 2,
+                duration: p.duration,
                 repeat: Infinity,
-                delay: Math.random() * 2,
+                delay: p.delay,
               }}
             />
           ))}
@@ -72,49 +74,24 @@ export default function LoadingScreen() {
             />
           ))}
 
+          {/* Content */}
           <div className="relative z-10 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="font-display text-3xl font-light tracking-widest sm:text-4xl">
-                {BRAND.name.split(" ").map((word, i) => (
-                  <motion.span
-                    key={i}
-                    className={i === 2 ? "gold-gradient-text" : "text-white"}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.15 + 0.3 }}
-                  >
-                    {word}{" "}
-                  </motion.span>
-                ))}
-              </h1>
-              <motion.p
-                className="mt-3 text-sm tracking-[0.4em] text-white/40 uppercase"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.8 }}
-              >
-                Premium Wooden Art
-              </motion.p>
-            </motion.div>
+            <h1 className="font-display text-3xl font-light tracking-widest text-white sm:text-4xl">
+              {BRAND.name}
+            </h1>
+            <p className="mt-3 text-sm tracking-[0.4em] text-white/40 uppercase">
+              Premium Wooden Art
+            </p>
 
             {/* Progress bar */}
-            <motion.div
-              className="mx-auto mt-8 h-px w-48 overflow-hidden bg-white/10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
+            <div className="mx-auto mt-8 h-px w-48 overflow-hidden bg-white/10">
               <motion.div
                 className="h-full bg-gradient-to-r from-purple-500 to-gold"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 2, ease: "easeInOut" }}
               />
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       )}
