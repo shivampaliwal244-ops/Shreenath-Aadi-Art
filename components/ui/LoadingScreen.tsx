@@ -7,8 +7,13 @@ import { BRAND } from "@/lib/constants";
 export default function LoadingScreen() {
   const [visible, setVisible] = useState(true);
   const [fading, setFading] = useState(false);
+  // 1. Ek naya state banayein check karne ke liye ki component mount hua ya nahi
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // 2. Client par aate hi isse true set kar dein
+    setIsMounted(true);
+    
     const fadeTimer = setTimeout(() => setFading(true), 2200);
     const hideTimer = setTimeout(() => setVisible(false), 3000);
     return () => {
@@ -28,8 +33,8 @@ export default function LoadingScreen() {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black-deep"
           aria-hidden="true"
         >
-          {/* Particles */}
-          {[...Array(20)].map((_, i) => (
+          {/* Particles - 3. Inhe tabhi render karein jab isMounted true ho */}
+          {isMounted && [...Array(20)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute h-1 w-1 rounded-full bg-gold/60"
