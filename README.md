@@ -1,4 +1,4 @@
-# Shreenath Aadi Art | Premium Digital Portfolio
+# Shreenath Aadi Art | Premium Digital website
 
 An immersive, high-performance web experience for a luxury wooden art brand. This project was engineered to showcase high-fidelity 3D/4D art products with a focus on deep aesthetic appeal and rapid performance.
 
