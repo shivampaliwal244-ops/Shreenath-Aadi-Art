@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black-deep: #030303;
+  --color-black-soft: #0a0a0f;
+  --color-purple-glow: #7c3aed;
+  --color-purple-light: #a855f7;
+  --color-purple-dark: #5b21b6;
+  --color-gold: #d4af37;
+  --color-gold-light: #f5c542;
+  --color-gold-dark: #b8962e;
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-outfit);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-black-deep font-body text-white antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(124, 58, 237, 0.4);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #030303;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #7c3aed, #d4af37);
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+
+  .font-body {
+    font-family: var(--font-outfit), system-ui, sans-serif;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #f5c542 0%, #d4af37 50%, #f5c542 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .purple-glow-text {
+    text-shadow: 0 0 40px rgba(124, 58, 237, 0.6);
+  }
+
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-nav {
+    background: rgba(3, 3, 3, 0.65);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-nav-scrolled {
+    background: rgba(3, 3, 3, 0.85);
+    box-shadow:
+      0 8px 40px rgba(124, 58, 237, 0.15),
+      0 4px 30px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .hero-gradient {
+    background:
+      radial-gradient(
+        ellipse 80% 60% at 50% -10%,
+        rgba(124, 58, 237, 0.25) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 60%,
+        rgba(212, 175, 55, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 50% 30% at 10% 80%,
+        rgba(124, 58, 237, 0.12) 0%,
+        transparent 50%
+      ),
+      #030303;
+  }
+
+  .section-glow {
+    background: radial-gradient(
+      ellipse 70% 50% at 50% 0%,
+      rgba(124, 58, 237, 0.08) 0%,
+      transparent 70%
+    );
+  }
+
+  .masonry-grid {
+    columns: 1;
+    column-gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .masonry-grid {
+      columns: 2;
+      column-gap: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry-grid {
+      columns: 3;
+      column-gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .masonry-grid {
+      columns: 4;
+    }
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .masonry-item {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .masonry-item {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .gallery-3d-scene {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+  }
+
+  .gallery-3d-room {
+    transform-style: preserve-3d;
+    transform: rotateX(8deg) rotateY(-12deg);
+  }
+
+  .gallery-3d-frame {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  .chat-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .chat-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(124, 58, 237, 0.5);
+    border-radius: 2px;
+  }
+
+  @keyframes particle-float {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.8;
+    }
+  }
+
+  .particle-dot {
+    animation-name: particle-float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+}

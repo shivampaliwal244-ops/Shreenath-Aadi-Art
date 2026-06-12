@@ -1,21 +1,44 @@
 # Shreenath Aadi Art
 
-A modern portfolio website built using React and Vite.
+Premium luxury wooden art business website for **Shreenath Aadi Art** by Sandeep Paliwal.
 
-## 🚀 Features
-- Smooth animations
-- Gallery with images & videos
-- Contact section with WhatsApp integration
-- Responsive design (mobile + desktop)
+## Tech Stack
 
-## 🛠 Tech Stack
-- React
-- Vite
-- CSS (Glass + Neon UI)
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- Lucide React Icons
 
-## 📦 Installation
+## Features
+
+- Dark luxury theme with purple glow and royal gold accents
+- Glassmorphism navbar, footer, and cards
+- 3D interactive art gallery showcase
+- Masonry gallery with category filters, lightbox, and branded watermarks
+- AI Art Assistant chat widget
+- WhatsApp integration throughout
+- SEO optimized with structured data
+- Fully responsive mobile-first design
+
+## Getting Started
 
 ```bash
 npm install
 npm run dev
+```
 
+Open [http://localhost:3000](http://localhost:3000).
+
+## Build
+
+```bash
+npm run build
+npm start
+```
+
+## Contact
+
+- **Owner:** Sandeep Paliwal
+- **Phone:** +91 9782715560
+- **Brand:** Shreenath Aadi Art
